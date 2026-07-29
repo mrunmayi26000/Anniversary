@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story | 5 Years Together</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Tap to Begin (needed so browsers allow the intro sound to play) -->
+    <div class="tap-start" id="tap-start">
+        <div class="tap-start-inner">
+            <div class="tap-logo">MYFLIX</div>
+            <button class="tap-btn" id="tap-btn">
+                <span class="tap-btn-icon">▶</span> Tap to Begin
+            </button>
+            <p class="tap-hint">🔊 Turn your sound on for the full experience</p>
+        </div>
+    </div>
+
+    <!-- Netflix-style boot/intro animation -->
+    <div class="intro" id="intro">
+        <div class="intro-logo-wrap">
+            <div class="intro-logo" id="intro-logo">#MY</div>
+        </div>
+    </div>
+
+    <!-- Preloader (episode-style loading bar, shown briefly after intro) -->
+    <div class="preloader" id="preloader">
+        <div class="loader-content">
+            <div class="netflix-loader-logo">MYFLIX</div>
+            <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+        </div>
+    </div>
+
+    <!-- Who's Watching Profile Select -->
+    <div class="profile-select" id="profile-select">
+        <h1 class="profile-title">Who's Loving?</h1>
+        <div class="profiles">
+            <button class="profile" data-name="Partner One">
+                <div class="profile-avatar avatar-one">👩</div>
+                <span>Partner One</span>
+            </button>
+            <button class="profile" data-name="Partner Two">
+                <div class="profile-avatar avatar-two">🧑</div>
+                <span>Partner Two</span>
+            </button>
+            <button class="profile profile-add">
+                <div class="profile-avatar avatar-add">+</div>
+                <span>Add Memory</span>
+            </button>
+        </div>
+        <p class="profile-hint">Tap a profile to start the story</p>
+    </div>
+
+    <!-- Ambient cursor glow -->
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <!-- Site wrapper (hidden until a profile is chosen) -->
+    <div class="site" id="site">
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <span class="logo-text">MYFLIX</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#timeline">Episodes</a></li>
+                    <li><a href="#memories">Memories</a></li>
+                    <li><a href="#trivia">Trivia Night</a></li>
+                    <li><a href="#message">Love Letter</a></li>
+                </ul>
+                <div class="nav-right">
+                    <button class="sound-toggle" id="sound-toggle" aria-label="Toggle sound" title="Toggle sound">🔊</button>
+                    <span class="nav-avatar" id="nav-avatar">👩</span>
+                    <div class="hamburger" id="hamburger">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#timeline">Episodes</a></li>
+                <li><a href="#memories">Memories</a></li>
+                <li><a href="#trivia">Trivia Night</a></li>
+                <li><a href="#message">Love Letter</a></li>
+            </ul>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-background">
+                <!-- REPLACE: Change these to your own couple photos -->
+                <img src="hero.jpeg" alt="Hero Background" class="hero-layer hero-layer-back" data-speed="0.2">
+                <div class="hero-layer hero-layer-vignette"></div>
+                <div class="hero-layer hero-layer-particles" id="hero-particles"></div>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <!-- <div class="anniversary-badge">🎉 5 YEARS 🎉</div> -->
+                <div class="netflix-tags">
+                    <span class="tag-maturity">R</span>
+                    <span class="tag-item">Romance</span>
+                    <span class="tag-dot">•</span>
+                    <span class="tag-item">Comedy</span>
+                    <span class="tag-dot">•</span>
+                    <span class="tag-item">Forever</span>
+                    <span class="tag-match">98% Match</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line">Our Love Story</span>
+                    <span class="title-highlight">A Netflix Original Series</span>
+                </h1>
+                <p class="hero-subtitle">5 Seasons • 1,825 Episodes • Infinite Love</p>
+
+                <div class="countdown-badge" id="countdown-badge">
+                    <span class="countdown-label">Next Season Premieres In</span>
+                    <div class="countdown-timer" id="countdown-timer">
+                        <div class="countdown-unit"><span id="cd-days">00</span><small>Days</small></div>
+                        <div class="countdown-unit"><span id="cd-hours">00</span><small>Hrs</small></div>
+                        <div class="countdown-unit"><span id="cd-mins">00</span><small>Min</small></div>
+                        <div class="countdown-unit"><span id="cd-secs">00</span><small>Sec</small></div>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <button class="btn btn-play" onclick="scrollToSection('memories')">
+                        <span class="play-icon">▶</span> Play Memories
+                    </button>
+                    <button class="btn btn-info" onclick="scrollToSection('timeline')">
+                        <span class="info-icon">ℹ</span> Our Journey
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" data-count="1825">0</span>
+                        <span class="stat-label">Days Together</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="43800">0</span>
+                        <span class="stat-label">Hours of Love</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Memories Made</span>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse"></div>
+                <p>Scroll to explore</p>
+            </div>
+        </section>
+
+        <!-- Popular / Trending row (auto-scrolling, Netflix-style) -->
+        <section class="popular-section">
+            <div class="row-header">
+                <h3 class="row-title">🔥 Popular on MYFLIX</h3>
+            </div>
+            <div class="auto-scroll-wrap">
+                <div class="auto-scroll-track" id="popular-track">
+                    <!-- content duplicated by JS for a seamless loop -->
+                </div>
+            </div>
+            <div class="row-header row-header-tight">
+                <h3 class="row-title">🏆 Top 10 In Our Hearts Today</h3>
+            </div>
+            <div class="auto-scroll-wrap reverse">
+                <div class="auto-scroll-track" id="top10-track">
+                    <!-- content duplicated by JS for a seamless loop -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline / Episodes Section -->
+        <section class="timeline-section" id="timeline">
+            <div class="section-header">
+                <h2>Our Journey Together</h2>
+                <p>Tap an episode to flip it over — every moment that led us here</p>
+            </div>
+            <div class="episode-grid">
+
+                <div class="episode-card" tabindex="0">
+                    <div class="episode-card-inner">
+                        <div class="episode-face episode-front">
+                            <span class="episode-tag">S1 · E1</span>
+                            <img src="17.jpeg" alt="Year 1">
+                            <h3>The Beginning</h3>
+                            <span class="timeline-date">2021</span>
+                        </div>
+                        <div class="episode-face episode-back">
+                            <span class="episode-tag">S1 · E1</span>
+                            <h3>The Beginning</h3>
+                            <p>When two souls found each other. The butterflies, the first date, the first "I love you."</p>
+                            <span class="episode-rating">⭐ 10/10 — Critics' Pick</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="episode-card" tabindex="0">
+                    <div class="episode-card-inner">
+                        <div class="episode-face episode-front">
+                            <span class="episode-tag">S2 · E1</span>
+                            <img src="2.jpeg" alt="Year 2">
+                            <h3>Growing Together</h3>
+                            <span class="timeline-date">2022</span>
+                        </div>
+                        <div class="episode-face episode-back">
+                            <span class="episode-tag">S2 · E1</span>
+                            <h3>Growing Together</h3>
+                            <p>Learning each other's quirks, building trust, and falling deeper in love every day.</p>
+                            <span class="episode-rating">⭐ 10/10 — Fan Favorite</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="episode-card" tabindex="0">
+                    <div class="episode-card-inner">
+                        <div class="episode-face episode-front">
+                            <span class="episode-tag">S3 · E1</span>
+                            <img src="6.jpeg" alt="Year 3">
+                            <h3>Adventures Await</h3>
+                            <span class="timeline-date">2023</span>
+                        </div>
+                        <div class="episode-face episode-back">
+                            <span class="episode-tag">S3 · E1</span>
+                            <h3>Adventures Await</h3>
+                            <p>Exploring the world together, making memories in new places, creating our own traditions.</p>
+                            <span class="episode-rating">⭐ 10/10 — Binge-Worthy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="episode-card" tabindex="0">
+                    <div class="episode-card-inner">
+                        <div class="episode-face episode-front">
+                            <span class="episode-tag">S4 · E1</span>
+                            <img src="9.jpeg" alt="Year 4">
+                            <h3>Through It All</h3>
+                            <span class="timeline-date">2024</span>
+                        </div>
+                        <div class="episode-face episode-back">
+                            <span class="episode-tag">S4 · E1</span>
+                            <h3>Through It All</h3>
+                            <p>Standing strong through challenges, supporting each other's dreams, becoming a team.</p>
+                            <span class="episode-rating">⭐ 10/10 — Award Winning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="episode-card" tabindex="0">
+                    <div class="episode-card-inner">
+                        <div class="episode-face episode-front">
+                            <span class="episode-tag">S5 · E1</span>
+                            <img src="20.jpeg" alt="Year 5">
+                            <h3>Here We Are</h3>
+                            <span class="timeline-date">2025</span>
+                        </div>
+                        <div class="episode-face episode-back">
+                            <span class="episode-tag">S5 · E1</span>
+                            <h3>Here We Are</h3>
+                            <p>Five beautiful years later, still choosing each other, every single day. Forever to go.</p>
+                            <span class="episode-rating">⭐ 10/10 — Renewed Forever</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="episode-card episode-next" tabindex="0">
+                    <div class="episode-card-inner">
+                        <div class="episode-face episode-front">
+                            <span class="episode-tag">S6 · E1</span>
+                            <div class="episode-placeholder">🔒</div>
+                            <h3>Coming Soon</h3>
+                            <span class="timeline-date">2026</span>
+                        </div>
+                        <div class="episode-face episode-back">
+                            <span class="episode-tag">S6 · E1</span>
+                            <h3>Coming Soon</h3>
+                            <p>The next chapter hasn't aired yet — but we already know it's going to be the best one.</p>
+                            <span class="episode-rating">⭐ Unrated — Renewed</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Memories Gallery Section -->
+        <section class="memories-section" id="memories">
+            <div class="section-header">
+                <h2>Our Favorite Episodes</h2>
+                <p>Hover to preview, click to watch in full</p>
+            </div>
+
+            <div class="category-tabs">
+                <button class="tab-btn active" data-category="all">All</button>
+                <button class="tab-btn" data-category="dates">Dates</button>
+                <button class="tab-btn" data-category="travel">Travel</button>
+                <button class="tab-btn" data-category="special">Special Moments</button>
+            </div>
+
+            <div class="memories-row">
+                <h3 class="row-title">🔥 Top Rated Episodes</h3>
+                <div class="carousel-container">
+                    <button class="carousel-btn prev" data-carousel="top-rated">❮</button>
+                    <div class="carousel" id="top-rated">
+                        <div class="memory-card" data-category="dates">
+                            <div class="card-inner">
+                                <span class="rank-badge">1</span>
+                                <img src="21.jpeg" alt="First Date">
+                                <video muted loop playsinline preload="none" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"></video>
+                                <div class="card-glare"></div>
+                                <button class="fav-btn" aria-label="Add to My List">+</button>
+                                <div class="card-overlay">
+                                    <span class="card-rating">⭐ 10/10</span>
+                                    <h4>First Dance</h4>
+                                    <p>Where it all began</p>
+                                </div>
+                                <div class="play-overlay"><span class="play-btn">▶</span></div>
+                            </div>
+                        </div>
+                        <div class="memory-card" data-category="travel">
+                            <div class="card-inner">
+                                <span class="rank-badge">2</span>
+                                <img src="22.jpeg" alt="First Trip">
+                                <video muted loop playsinline preload="none" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"></video>
+                                <div class="card-glare"></div>
+                                <button class="fav-btn" aria-label="Add to My List">+</button>
+                                <div class="card-overlay">
+                                    <span class="card-rating">⭐ 10/10</span>
+                                    <h4>The one where it became official</h4>
+                                    <p>Adventure awaits</p>
+                                </div>
+                                <div class="play-overlay"><span class="play-btn">▶</span></div>
+                            </div>
+                        </div>
+                        <div class="memory-card" data-category="special">
+                            <div class="card-inner">
+                                <span class="rank-badge">3</span>
+                                <img src="2.jpeg" alt="Anniversary 1">
+                                <video muted loop playsinline preload="none" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"></video>
+                                <div class="card-glare"></div>
+                                <button class="fav-btn" aria-label="Add to My List">+</button>
+                                <div class="card-overlay">
+                                    <span class="card-rating">⭐ 10/10</span>
+                                    <h4>The one with the Ring</h4>
+                                    <p>One year strong</p>
+                                </div>
+                                <div class="play-overlay"><span class="play-btn">▶</span></div>
+                            </div>
+                        </div>
+                        <div class="memory-card" data-category="dates">
+                            <div class="card-inner">
+                                <span class="rank-badge">4</span>
+                                <img src="24.jpeg" alt="Movie Night">
+                                <video muted loop playsinline preload="none" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"></video>
+                                <div class="card-glare"></div>
+                                <button class="fav-btn" aria-label="Add to My List">+</button>
+                                <div class="card-overlay">
+                                    <span class="card-rating">⭐ 10/10</span>
+                                    <h4>It's always the first eye contact</h4>
+                                    <p>Cozy moments</p>
+                                </div>
+                                <div class="play-overlay"><span class="play-btn">▶</span></div>
+                            </div>
+                        </div>
+                        <div class="memory-card" data-category="travel">
+                            <div class="card-inner">
+                                <span class="rank-badge">5</span>
+                                <img src="25.jpeg" alt="Beach Day">
+                                <video muted loop playsinline preload="none" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"></video>
+                                <div class="card-glare"></div>
+                                <button class="fav-btn" aria-label="Add to My List">+</button>
+                                <div class="card-overlay">
+                                    <span class="card-rating">⭐ 10/10</span>
+                                    <h4>Gharwali Shaadi</h4>
+                                    <p>Sun and love</p>
+                                </div>
+                                <div class="play-overlay"><span class="play-btn">▶</span></div>
+                            </div>
+                        </div>
+                        <div class="memory-card" data-category="special">
+                            <div class="card-inner">
+                                <span class="rank-badge">6</span>
+                                <img src="27.jpeg" alt="Surprise">
+                                <video muted loop playsinline preload="none" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"></video>
+                                <div class="card-glare"></div>
+                                <button class="fav-btn" aria-label="Add to My List">+</button>
+                                <div class="card-overlay">
+                                    <span class="card-rating">⭐ 10/10</span>
+                                    <h4>The Date</h4>
+                                    <p>You made my day</p>
+                                </div>
+                                <div class="play-overlay"><span class="play-btn">▶</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" data-carousel="top-rated">❯</button>
+                </div>
+            </div>
+
+            <div class="memories-row">
+                <h3 class="row-title">💕 Romantic Moments</h3>
+                <div class="carousel-container">
+                    <button class="carousel-btn prev" data-carousel="romantic">❮</button>
+                    <div class="carousel" id="romantic">
+                        <div class="memory-card" data-category="special">
+                            <div class="card-inner">
+                                <img src="19.jpeg" alt="Sunset Love">
+                                <video muted loop playsinline preload="none" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4"></video>
+                                <div class="card-glare"></div>
+                                <button class="fav-btn" aria-label="Add to My List">+</button>
+                                <div class="card-overlay">
+                                    <span class="card-rating">⭐ 10/10</span>
+                                    <h4>Sunset Love</h4>
+                                    <p>Golden hour magic</p>
+                                </div>
+                                <div class="play-overlay"><span class="play-btn">▶</span></div>
+                            </div>
+                        </div>
+                        <div class="memory-card" data-category="dates">
+                            <div class="card-inner">
+                                <img src="20.jpeg" alt="Dinner Date">
+                                <video muted loop playsinline preload="none" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"></video>
+                                <div class="card-glare"></div>
+                                <button class="fav-btn" aria-label="Add to My List">+</button>
+                                <div class="card-overlay">
+                                    <span class="card-rating">⭐ 10/10</span>
+                                    <h4>Dinner Date</h4>
+                                    <p>Fine dining & love</p>
+                                </div>
+                                <div class="play-overlay"><span class="play-btn">▶</span></div>
+                            </div>
+                        </div>
+                        <div class="memory-card" data-category="special">
+                            <div class="card-inner">
+                                <img src="26.jpeg" alt="Dance Night">
+                                <video muted loop playsinline preload="none" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"></video>
+                                <div class="card-glare"></div>
+                                <button class="fav-btn" aria-label="Add to My List">+</button>
+                                <div class="card-overlay">
+                                    <span class="card-rating">⭐ 10/10</span>
+                                    <h4>Dance Night</h4>
+                                    <p>Dancing together</p>
+                                </div>
+                                <div class="play-overlay"><span class="play-btn">▶</span></div>
+                            </div>
+                        </div>
+                        <div class="memory-card" data-category="travel">
+                            <div class="card-inner">
+                                <img src="9.jpeg" alt="City Escape">
+                                <video muted loop playsinline preload="none" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"></video>
+                                <div class="card-glare"></div>
+                                <button class="fav-btn" aria-label="Add to My List">+</button>
+                                <div class="card-overlay">
+                                    <span class="card-rating">⭐ 10/10</span>
+                                    <h4>City Escape</h4>
+                                    <p>Urban adventures</p>
+                                </div>
+                                <div class="play-overlay"><span class="play-btn">▶</span></div>
+                            </div>
+                        </div>
+                        <div class="memory-card" data-category="dates">
+                            <div class="card-inner">
+                                <img src="29.jpeg" alt="Coffee Date">
+                                <video muted loop playsinline preload="none" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"></video>
+                                <div class="card-glare"></div>
+                                <button class="fav-btn" aria-label="Add to My List">+</button>
+                                <div class="card-overlay">
+                                    <span class="card-rating">⭐ 10/10</span>
+                                    <h4>Coffee Date</h4>
+                                    <p>Simple pleasures</p>
+                                </div>
+                                <div class="play-overlay"><span class="play-btn">▶</span></div>
+                            </div>
+                        </div>
+                        <div class="memory-card" data-category="special">
+                            <div class="card-inner">
+                                <img src="28.jpeg" alt="Stargazing">
+                                <video muted loop playsinline preload="none" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"></video>
+                                <div class="card-glare"></div>
+                                <button class="fav-btn" aria-label="Add to My List">+</button>
+                                <div class="card-overlay">
+                                    <span class="card-rating">⭐ 10/10</span>
+                                    <h4>Stargazing</h4>
+                                    <p>You're my universe</p>
+                                </div>
+                                <div class="play-overlay"><span class="play-btn">▶</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" data-carousel="romantic">❯</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="video-section">
+            <div class="section-header">
+                <h2>Featured Episode</h2>
+                <p>Our most special moment</p>
+            </div>
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <!-- REPLACE: swap this for your own video file -->
+                    <video id="featured-video" poster="24.jpeg" playsinline>
+                        <source src="video.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay" id="video-overlay">
+                        <button class="video-play-btn" id="video-play-btn"><span>▶</span></button>
+                        <div class="video-info">
+                            <h3>Our Story — Season 5 Finale</h3>
+                            <p>The best is yet to come</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trivia / Interactive Special -->
+        <section class="trivia-section" id="trivia">
+            <div class="section-header">
+                <h2>Interactive Special: Love Trivia</h2>
+                <p>How well do you two know your own story?</p>
+            </div>
+            <div class="trivia-card">
+                <div class="trivia-progress"><div class="trivia-progress-fill" id="trivia-progress-fill"></div></div>
+                <div id="trivia-question-wrap">
+                    <span class="trivia-count" id="trivia-count">Question 1 of 5</span>
+                    <h3 id="trivia-question">Where was our first date?</h3>
+                    <div class="trivia-options" id="trivia-options">
+                        <!-- filled by JS -->
+                    </div>
+                </div>
+                <div id="trivia-result" class="trivia-result hidden">
+                    <div class="trivia-result-icon">🏆</div>
+                    <h3>Season Complete!</h3>
+                    <p id="trivia-score-text">You scored 0 / 5</p>
+                    <button class="btn btn-open-letter" id="trivia-replay">Watch Again</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Love Letter Section -->
+        <section class="message-section" id="message">
+            <div class="floating-hearts">
+                <span class="heart">❤️</span><span class="heart">💕</span><span class="heart">💗</span>
+                <span class="heart">💖</span><span class="heart">❤️</span><span class="heart">💕</span>
+                <span class="heart">💗</span><span class="heart">💖</span>
+            </div>
+            <div class="message-container">
+                <div class="message-card">
+                    <div class="envelope" id="envelope">
+                        <div class="envelope-flap"></div>
+                        <div class="envelope-body">
+                            <div class="envelope-peek">💌</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-open-letter" id="open-letter">💌 Open Love Letter</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Plans Section -->
+        <section class="future-section">
+            <div class="section-header">
+                <h2>Coming Soon — Season 6</h2>
+                <p>Preview of our next chapter</p>
+            </div>
+            <div class="future-grid">
+                <div class="future-card">
+                    <div class="future-icon">🌍</div>
+                    <h3>More Adventures</h3>
+                    <p>New places to explore together</p>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">🏠</div>
+                    <h3>Building Our Home</h3>
+                    <p>Creating our forever place</p>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">💍</div>
+                    <h3>New Milestones</h3>
+                    <p>More chapters to write</p>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">👨‍👩‍👧</div>
+                    <h3>Growing Family</h3>
+                    <p>Dreams of tomorrow</p>
+                </div>
+            </div>
+            <div class="celebrate-wrap">
+                <button class="btn btn-celebrate" id="celebrate-btn">🎉 Celebrate Us</button>
+            </div>
+        </section>
+
+        <!-- Cinematic Credits -->
+        <section class="credits-section">
+            <div class="credits-roll">
+                <p class="credits-heading">MYFLIX PRESENTS</p>
+                <h2>Our Love Story</h2>
+                <p class="credits-role">Starring</p>
+                <p class="credits-name">You &amp; Me</p>
+                <p class="credits-role">Genre</p>
+                <p class="credits-name">Romance / Comedy / Slice of Life</p>
+                <p class="credits-role">Rating</p>
+                <p class="credits-name">A Perfect 10/10</p>
+                <p class="credits-role">Seasons</p>
+                <p class="credits-name">5 and Counting</p>
+                <p class="credits-role">Status</p>
+                <p class="credits-name">Renewed, Indefinitely</p>
+                <p class="credits-thanks">To be continued...</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">MYFLIX</div>
+                <p class="footer-text">A love story 5 years in the making</p>
+                <p class="footer-date">Celebrating since 2021 ❤️</p>
+                <div class="footer-hearts"><span>💕</span><span>Made with love</span><span>💕</span></div>
+            </div>
+        </footer>
+
+    </div><!-- /.site -->
+
+    <!-- Photo Modal -->
+    <div class="modal" id="photo-modal">
+        <div class="modal-content">
+            <span class="modal-close" id="modal-close">&times;</span>
+            <img src="" alt="Full size photo" id="modal-image">
+            <div class="modal-caption" id="modal-caption"></div>
+        </div>
+    </div>
+
+    <!-- Love Letter full modal (fixes envelope only showing partial content) -->
+    <div class="letter-modal" id="letter-modal">
+        <div class="letter-modal-content">
+            <span class="letter-modal-close" id="letter-modal-close">&times;</span>
+            <div class="letter-paper">
+                <div class="letter-content">
+                    <h2>Dear Yoo,</h2>
+                    <!-- REPLACE: write your own personal message here -->
+                    <p>Five years ago, my life changed forever when you walked into it. You've been my best friend, my confidant, my biggest supporter, and the love of my life.</p>
+                    <p>Thank you for being my Green Forest, my strongest supporter,my peace after all the chaos in life and my Pookieee<3</p>
+                    <p>I still remember the little things, the way you laugh at your own jokes before you finish telling them, the way you always save me the last bite, the way you made me feel home can be a person too.</p>
+                    <p>Here's to achieving every dream we saw together and Enjoy every bit of our success </p>
+                    <p>Here's to five years down and forever to go. I love you Yooooo!!!</p>
+                    <p class="signature">Forever Yours,<br><span class="name">Mrunz</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Surprise pop-up notification (appears suddenly) -->
+    <div class="surprise-toast" id="surprise-toast">
+        <div class="surprise-toast-icon">💌</div>
+        <div class="surprise-toast-text">
+            <strong>New Episode Alert</strong>
+            <span>A surprise just dropped for you...</span>
+        </div>
+        <button class="surprise-toast-close" id="surprise-toast-close">&times;</button>
+    </div>
+
+    <!-- Surprise "Would You Rather" mini game modal -->
+    <div class="surprise-modal" id="surprise-modal">
+        <div class="surprise-modal-card">
+            <span class="surprise-modal-close" id="surprise-modal-close">&times;</span>
+            <div id="surprise-game-wrap">
+                <span class="surprise-eyebrow">💕 Bonus Round</span>
+                <h3 id="surprise-question">Would you rather...</h3>
+                <div class="surprise-options" id="surprise-options"></div>
+                <p class="surprise-progress" id="surprise-progress">1 / 3</p>
+            </div>
+            <div id="surprise-end-wrap" class="hidden">
+                <div class="surprise-end-icon">💞</div>
+                <h3>You + Me = Perfect Match</h3>
+                <p>Whatever you picked, I'd pick you every single time.</p>
+                <button class="btn btn-open-letter" id="surprise-close-btn">Aww, close this 🥹</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confetti canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
